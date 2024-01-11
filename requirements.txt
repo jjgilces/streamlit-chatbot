@@ -2,4 +2,6 @@ streamlit
 streamlit_chat
 openai
 langchain
-sentence_transformers
+sentence-transformers==2.2.2
+transformers==4.35.2
+
