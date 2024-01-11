@@ -11,7 +11,6 @@ import openai
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import TextLoader,CSVLoader
 
-
 # Set OPENAI_API_KEY as an environment variable
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 llm_name = "gpt-3.5-turbo"
@@ -69,20 +68,19 @@ def conversation_chat(query, chain, history):
     output = chain({"query": query})
     history.append((query, output['result']))
     return output['result']
-
 def display_chat_history(chain):
     reply_container = st.container()
     container = st.container()
 
     with container:
         with st.form(key='my_form', clear_on_submit=True):
-            user_input = st.text_input("Question:", placeholder="Ask me anything", key='input')
-            submit_button = st.form_submit_button(label='Send')
+            # Cambio en el placeholder y la etiqueta del botón
+            user_input = st.text_input("Pregunta:", placeholder="Pregúntame lo que quieras", key='input')
+            submit_button = st.form_submit_button(label='Enviar')
 
         if submit_button and user_input:
-            with st.spinner('Loading answer...'):
+            with st.spinner('Obteniendo respuesta...'):
                 output = conversation_chat(user_input, chain, st.session_state['history'])
-
 
             st.session_state['past'].append(user_input)
             st.session_state['generated'].append(output)
@@ -90,30 +88,32 @@ def display_chat_history(chain):
     if st.session_state['generated']:
         with reply_container:
             for i in range(len(st.session_state['generated'])):
+                # Cambios en los mensajes para el usuario y el chatbot
                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="thumbs")
                 message(st.session_state["generated"][i], key=str(i), avatar_style="fun-emoji")
 
 def main():
     if 'history' not in st.session_state:
         st.session_state['history'] = []
-        st.session_state['generated'] = ["Hello! Ask me anything"]
-        st.session_state['past'] = ["Hey! 👋"]
+        st.session_state['generated'] = ["¡Hola! Pregúntame lo que quieras"]
+        st.session_state['past'] = ["¡Hey! 👋"]
 
+    # Cambio en el título
     st.title("Chatbot FIEC :books:")
-    
-    # Load CSV data
+
+    # Carga de datos CSV
     directory_documents = load_csv_data('data/directorio.csv')
 
     txt_documents = load_txt_data('data/base.txt')
-    combined_documents = directory_documents   + txt_documents 
+    combined_documents = directory_documents + txt_documents
 
-    # Create embeddings and vector store
+    # Crear embeddings y almacenamiento de vectores
     vector_store = create_embeddings_and_vector_store(combined_documents)
 
-    # Create the chain object
+    # Crear el objeto de cadena de recuperación
     chain = create_retrieval_chain(llm, vector_store)
 
-    # Display chat history
+    # Mostrar historial de chat
     display_chat_history(chain)
 
 if __name__ == "__main__":
