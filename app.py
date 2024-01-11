@@ -11,14 +11,9 @@ import openai
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import TextLoader,CSVLoader
 
-with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", type="password")
-if not openai_api_key:
-    st.info("Please add your OpenAI API key to continue.")
-    st.stop()
 
 # Set OPENAI_API_KEY as an environment variable
-os.environ["OPENAI_API_KEY"] = openai_api_key
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 llm_name = "gpt-3.5-turbo"
 llm = ChatOpenAI(model_name=llm_name, temperature=0)
 
