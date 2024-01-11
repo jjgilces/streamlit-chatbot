@@ -2,3 +2,4 @@ streamlit
 streamlit_chat
 openai
 langchain
+sentence_transformers
