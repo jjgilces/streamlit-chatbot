@@ -15,7 +15,7 @@ from langchain.document_loaders import TextLoader, CSVLoader
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
 llm_name = "gpt-3.5-turbo"
-llm = ChatOpenAI(model_name=llm_name, temperature=0)
+llm = ChatOpenAI(model_name=llm_name, temperature=0.1)
 
 def load_csv_data(path):
     try:
@@ -68,7 +68,7 @@ def create_retrieval_chain(llm, vector_store):
         handler = StdOutCallbackHandler()
         return RetrievalQA.from_chain_type(
             llm=llm,
-            retriever=vector_store.as_retriever(search_kwargs={"k": 2}),
+            retriever=vector_store.as_retriever(search_kwargs={"k": 5}),
             callbacks=[handler],
             return_source_documents=True
         )
@@ -86,12 +86,10 @@ def conversation_chat(query, chain, history):
         return "Lo siento, ocurrió un error."
 
 def display_chat_history(chain):
-    if 'history' not in st.session_state:
-        st.session_state['history'] = []
-        st.session_state['generated'] = ["¡Hola! Pregúntame lo que quieras"]
-        st.session_state['past'] = ["¡Hey! 👋"]
+    reply_container = st.container()
+    container = st.container()
 
-    with st.container():
+    with container:
         with st.form(key='my_form', clear_on_submit=True):
             user_input = st.text_input("Pregunta:", placeholder="Pregúntame lo que quieras", key='input')
             submit_button = st.form_submit_button(label='Enviar')
@@ -99,24 +97,31 @@ def display_chat_history(chain):
         if submit_button and user_input:
             with st.spinner('Obteniendo respuesta...'):
                 output = conversation_chat(user_input, chain, st.session_state['history'])
-                st.session_state['past'].append(user_input)
-                st.session_state['generated'].append(output)
+            st.session_state['past'].append(user_input)
+            st.session_state['generated'].append(output)
 
     if st.session_state['generated']:
-        with st.container():
+        with reply_container:
             for i in range(len(st.session_state['generated'])):
                 message(st.session_state["past"][i], is_user=True, key=str(i) + '_user', avatar_style="thumbs")
                 message(st.session_state["generated"][i], key=str(i), avatar_style="fun-emoji")
 
 def main():
+    if 'history' not in st.session_state:
+        st.session_state['history'] = []
+        st.session_state['generated'] = ["Hola! ¿Qué te gustaría saber?"]
+        st.session_state['past'] = ["Hola! 👋"]
+
     st.title("Chatbot FIEC :books:")
     directory_documents = load_csv_data('data/directorio.csv')
-    txt_documents = load_txt_data('data/base.txt') + load_txt_data('data/coordinadores.txt')
-    if not directory_documents or not txt_documents:
+    base_documents = load_txt_data('data/base.txt') 
+    teachers_documents= load_txt_data('data/coordinadores.txt')
+    print(teachers_documents)
+    if not directory_documents or not base_documents:
         st.error("Error al cargar los documentos. Por favor verifica los archivos y formatos.")
         return
 
-    combined_documents = directory_documents + txt_documents
+    combined_documents =   base_documents+ teachers_documents + directory_documents
     vector_store = create_embeddings_and_vector_store(combined_documents)
     if not vector_store:
         st.error("Error al crear el almacenamiento de vectores.")

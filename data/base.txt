@@ -1,10 +1,11 @@
-### FIEC
+# FIEC
 **Introduction**
 - FIEC es la Facultad de Ingeniería en Electricidad y Computación de la ESPOL.
 - ESPOL es la Escuela Superior Politécnica del Litoral.
 
-### ADMINISTACIÓN 
+## ADMINISTACIÓN 
 Está integrado por la Decana, Subdecana y tres profesores.
+
 Decano de la FIEC: Jorge Aragundi Rodríguez, Ph.D.
 
 Subdecana: Vanessa Ines Cedeño Mieles, Ph.D.
@@ -44,14 +45,6 @@ i. Conocer los asuntos que sean sometidos a su consideración por sus autoridade
 - **Misión:** Cooperamos con la sociedad para mejorar la calidad de vida y promover el desarrollo sostenible y equitativo, a través de formación profesional íntegra y competente, investigación e innovación; en los campos de Ingeniería Eléctrica y Ciencias de la Computación.
 - **Visión:** Ser líder, en América Latina, en la formación del talento humano avanzado y en la generación y transferencia de conocimientos en el ámbito de su competencia.
 
----
-
-### ESPOL
-**Misión y Visión de la FIEC**
-- **Misión:** Cooperamos con la sociedad para mejorar la calidad de vida y promover el desarrollo sostenible y equitativo, a través de formación profesional íntegra y competente, investigación e innovación.
-- **Visión:** Ser una comunidad académica consolidada, con altos estándares internacionales, de líderes creativos e innovadores que respondan de forma oportuna a las necesidades de la sociedad.
-
----
 
 ### Valores
 - **Integridad:** Practicamos la ética en nuestro accionar y rendimos cuentas sobre lo que hacemos. 

@@ -1,0 +1,31 @@
+# Coordinadores de la FIEC
+
+## Coordinadores de Programas de Pregrado
+- Coordinador de Ingeniería en Telemática: José Córdova, Ph.D.
+- Coordinador de Ingeniería en Computación: José Asencio, Mg.
+- Coordinador de Ingeniería en Electricidad: Miguel Torres, Ph.D.
+- Coordinador de Ingeniería en Electrónica y Automatización: Ángel Recalde, Ph.D.
+- Coordinador de Ingeniería en Telecomunicaciones: José Moncayo, Mg.
+
+## Coordinadores de Programas de Licenciatura
+- Coordinador de Licenciatura en Redes y Sistemas Operativos: José Córdova, Ph.D.
+- Coordinador de Licenciatura en Sistemas de Información: José Asencio, Mg.
+
+## Coordinadores de Programas de Posgrado
+
+### Maestrías
+- Coordinador de Automatización y Control Industrial (MACI): Douglas Plaza, Ph.D.
+- Coordinador de Ciencias de la Computación (MCC): Daniel Ochoa, Ph.D.
+- Coordinador de Ciencia de Datos (MDS): José Córdova, Ph.D.
+- Coordinador de Ingeniería Biomédica (MIB): Miguel Yapur, M.Sc.
+- Coordinador de Seguridad Informática (MSI): Lenin Freire, Mg.
+- Coordinador de Sistemas de Información Gerencial (MSIG): Lenin Freire, Mg.
+- Coordinador de Electricidad, mención en Sistemas Eléctricos de Potencia (MSEP): Fernando Vaca, M.Eng.
+- Coordinador de Telecomunicaciones (MET): Verónica Soto, M.Sc.
+
+### Doctorados
+- Coordinador de Ciencias Computacionales (DCCA): Mónica Villavicencio, Ph.D.
+- Coordinador de Ingeniería Eléctrica (DIE): Ángel Sappa, Ph.D.
+
+## Seguimiento a Graduados
+- Responsables del seguimiento a graduados de las diversas carreras de grado.
