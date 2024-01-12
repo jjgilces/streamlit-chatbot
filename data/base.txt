@@ -3,6 +3,8 @@
 - FIEC es la Facultad de Ingeniería en Electricidad y Computación de la ESPOL.
 - ESPOL es la Escuela Superior Politécnica del Litoral.
 
+- Coordinador de Telemática: José Córdova, Ph.D.
+
 ## ADMINISTACIÓN 
 Está integrado por la Decana, Subdecana y tres profesores.
 
