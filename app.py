@@ -75,7 +75,7 @@ def create_retrieval_chain(llm, vector_store):
 
 def conversation_chat(query, chain, history):
     try:
-         if "coordinador" in query.lower():
+        if "coordinador" in query.lower():
             return "El coordinador de Ingeniería en Telemática es José Córdova, Ph.D."
         output = chain({"query": query})
         history.append((query, output['result']))
