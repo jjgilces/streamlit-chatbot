@@ -3,7 +3,6 @@ from streamlit_chat import message
 from langchain.chains import RetrievalQA
 from langchain.embeddings import CacheBackedEmbeddings, HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
-from langchain.storage import LocalFileStore
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.callbacks import StdOutCallbackHandler
 import os
@@ -52,11 +51,9 @@ def load_txt_data(path):
 
 def create_embeddings_and_vector_store(directory_documents):
     try:
-        store = LocalFileStore("./cache/")
+        #store = LocalFileStore("./cache/")
         embed_model_id = 'paraphrase-multilingual-MiniLM-L12-v2'
-
-        core_embeddings_model = HuggingFaceEmbeddings(model_name=embed_model_id)
-        embedder = CacheBackedEmbeddings.from_bytes_store(core_embeddings_model, store, namespace=embed_model_id)
+        embedder = HuggingFaceEmbeddings(model_name=embed_model_id)
 
         return FAISS.from_documents(directory_documents, embedder)
     except Exception as e:
@@ -116,7 +113,6 @@ def main():
     directory_documents = load_csv_data('data/directorio.csv')
     base_documents = load_txt_data('data/base.txt') 
     teachers_documents= load_txt_data('data/coordinadores.txt')
-    print(teachers_documents)
     if not directory_documents or not base_documents:
         st.error("Error al cargar los documentos. Por favor verifica los archivos y formatos.")
         return
